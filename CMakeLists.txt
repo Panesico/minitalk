@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 3.12)
+
+project(test)
+include_directories(libft)
+file(GLOB SOURCES_LIBFT "libft/*.c")
+add_library(LIBFT STATIC ${SOURCES_LIBFT})
+include_directories(includes)
+file(GLOB SOURCES_MINITALK "srcs/*.c")
+add_library(MINITALK STATIC ${SOURCES_MINITALK})
+file(GLOB SOURCES_CLIENT "srcs/client.c" "libft/*.c")
+add_executable(client ${SOURCES_CLIENT})
+file(GLOB SOURCES_SERVER "srcs/server.c" "libft/*.c")
+add_executable(server ${SOURCES_SERVER})
