@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   server.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jorgfern <jorgfern@student.42malaga.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/09 23:57:07 by jorgfern          #+#    #+#             */
+/*   Updated: 2023/06/11 13:55:39 by jorgfern         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/minitalk.h"
 
 void	ft_bits_to_char(int signal, siginfo_t *info, void *context)
@@ -8,25 +20,21 @@ void	ft_bits_to_char(int signal, siginfo_t *info, void *context)
 	(void)info;
 	(void)context;
 	if (signal == SIGUSR1)
-		c = c << 1 | 1;
-	else if (signal == SIGUSR2)
-		c = c << 1;
+		c = c | (1 << cnt);
 	cnt++;
 	if (cnt == 8)
 	{
 		ft_printf("%c", c);
-		if (c == 0)
+		if (!c)
 			ft_printf("\n");
 		cnt = 0;
 		c = 0;
 	}
 }
 
-int main (int argc, char **argv)
+int	main(void)
 {
-	(void)argc;
-	(void)argv;
-	struct	sigaction	sa;
+	struct sigaction	sa;
 
 	sa.sa_flags = SA_SIGINFO;
 	sa.sa_sigaction = ft_bits_to_char;
@@ -35,7 +43,5 @@ int main (int argc, char **argv)
 	{
 		sigaction(SIGUSR1, &sa, NULL);
 		sigaction(SIGUSR2, &sa, NULL);
-		pause();
-		usleep(50);
 	}
 }

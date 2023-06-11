@@ -1,15 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   client.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jorgfern <jorgfern@student.42malaga.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/11 13:47:41 by jorgfern          #+#    #+#             */
+/*   Updated: 2023/06/11 13:47:41 by jorgfern         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/minitalk.h"
 
-void ft_send_bits(char c, int pid)
+void	ft_send_bits(char c, int pid)
 {
 	int	i;
-	int bit;
+	int	bit;
 
 	bit = 0;
-	i = 7;
-	while(i >= 0)
+	i = 0;
+	while (i < 8)
 	{
-		bit = (c & (1 << i) << i);
+		bit = (c & (1 << i));
 		if (bit)
 			kill(pid, SIGUSR1);
 		else
@@ -19,31 +31,27 @@ void ft_send_bits(char c, int pid)
 	}
 }
 
-int ft_loop_send_bits(char *str, int pid)
+int	ft_loop_send_bits(char *str, int pid)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
 	{
 		ft_send_bits(str[i], pid);
-		usleep(50);
 		i++;
 	}
-	if (!str[i])
-	{
-		ft_send_bits(str[i], pid);
-	}
+	ft_send_bits(0, pid);
 	return (0);
 }
 
-int main (int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	(void)argc;
-	int pid;
-	int i;
+	int	pid;
+	int	i;
 
-	pid = ft_atoi(argv[1]);
+	if (argc > 1)
+		pid = ft_atoi(argv[1]);
 	i = 2;
 	while (i < argc)
 	{
