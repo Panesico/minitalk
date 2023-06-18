@@ -33,7 +33,7 @@ void	ft_bits_to_char(int signal, siginfo_t *info, void *context)
 {
 	static char	c;
 	static int	cnt;
-	static int boole;
+	static int	boole;
 
 	(void)info;
 	(void)context;
