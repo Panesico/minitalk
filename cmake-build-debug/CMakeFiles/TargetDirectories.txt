@@ -1,8 +1,0 @@
-/home/panesico/CLionProjects/minitalk/cmake-build-debug/CMakeFiles/LIBFT.dir
-/home/panesico/CLionProjects/minitalk/cmake-build-debug/CMakeFiles/MINITALK.dir
-/home/panesico/CLionProjects/minitalk/cmake-build-debug/CMakeFiles/client.dir
-/home/panesico/CLionProjects/minitalk/cmake-build-debug/CMakeFiles/MINITALK_B.dir
-/home/panesico/CLionProjects/minitalk/cmake-build-debug/CMakeFiles/client_bonus.dir
-/home/panesico/CLionProjects/minitalk/cmake-build-debug/CMakeFiles/server_bonus.dir
-/home/panesico/CLionProjects/minitalk/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/panesico/CLionProjects/minitalk/cmake-build-debug/CMakeFiles/rebuild_cache.dir
