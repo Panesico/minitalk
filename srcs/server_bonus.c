@@ -58,9 +58,10 @@ int	main(void)
 	sa.sa_flags = SA_SIGINFO;
 	sa.sa_sigaction = ft_bits_to_char;
 	ft_printf("%d\n", getpid());
+	sigaction(SIGUSR1, &sa, NULL);
+	sigaction(SIGUSR2, &sa, NULL);
 	while (1)
 	{
-		sigaction(SIGUSR1, &sa, NULL);
-		sigaction(SIGUSR2, &sa, NULL);
+		pause();
 	}
 }
